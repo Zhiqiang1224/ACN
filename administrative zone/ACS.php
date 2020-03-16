@@ -91,7 +91,7 @@ class ACS extends MY_Controller
      * @param $acsOrder
      * @param $output_action
      */
-    public function processOrder($acsOrder, $output_action){
+    private function processOrder($acsOrder, $output_action){
 
         $data_server = [  // insert into acsApi server tracking table with dsl id
             'dslId'          => 97,  // $acsOrder['DSL_ID']
@@ -157,7 +157,7 @@ class ACS extends MY_Controller
      * @param $emptyMessage
      * @return mixed
      */
-    public function errorEmpty($emptyMessage){
+    private function errorEmpty($emptyMessage){
         $responseAcs = [];
         http_response_code(404); // Setting the http status code to 404
 
@@ -173,7 +173,7 @@ class ACS extends MY_Controller
      * @param $order
      * @param $responseAcs
      */
-    public function storeAcsResponse($responseAcs, $order =null){
+    private storeAcsResponse($responseAcs, $order =null){
 
         if($responseAcs){
             if($responseAcs['http_Code'] != 200){
@@ -200,7 +200,7 @@ class ACS extends MY_Controller
      * @param $order
      * @return array
      */
-    public function activateAcsOrder($order){
+    private function activateAcsOrder($order){
         $acs = new acsApi();
         /**********************************************************************************************
          *  Adding  subscriber information
@@ -265,7 +265,7 @@ class ACS extends MY_Controller
      * @param $order
      * @return array
      */
-    public function deactivateAcsOrder($order){
+    private function deactivateAcsOrder($order){
         // Prepare the data for deactivate request
         $params = [
             'serialNumber'      => $order['SERIALNUMBER'],
@@ -295,7 +295,7 @@ class ACS extends MY_Controller
      * @param $order
      * @return array
      */
-    public function addReplaceDevice($order){
+    private function addReplaceDevice($order){
         // Check the device type
         $isCable = $this->hsi_validator->getDeviceType($order['SERVICEPROVIDER']);
 
@@ -324,7 +324,7 @@ class ACS extends MY_Controller
      * @param $order
      * @return array|false|string
      */
-    public function updateAcsCredential($order){
+    private function updateAcsCredential($order){
         $acs = new acsApi();
         // Get the PPP credentials in ACS by serial number
         $responseCredential = $acs->getCredentialBySerialNumber($order['SERIALNUMBER']);
@@ -362,7 +362,7 @@ class ACS extends MY_Controller
      * @param $order
      * @return array
      */
-    public function updateAcsDevice($order){
+    private function updateAcsDevice($order){
         $acs = new acsApi();
         // Get the user information
         $responseSearchCode = $acs->searchUsrBySubscriberCode($order['SUBSCRIBERCODE']);

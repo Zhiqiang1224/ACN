@@ -64,21 +64,21 @@ class CPE extends MY_Controller
     /**
      * Add action of CPE
      */
-    public function add(){
+    private function add(){
         $this->_doAction('add');
     }
 
     /**
      * Change action of CPE
      */
-    public function change(){
+    private function change(){
         $this->_doAction('change');
     }
 
     /**
      * Delete action of CPE
      */
-    public function delete(){
+    private function delete(){
         $this->_doAction('delete');
     }
 
@@ -87,7 +87,7 @@ class CPE extends MY_Controller
      * @param $order
      * @param $response
      */
-    public function storeCpeResponse($order, $responseCpe){
+    private function storeCpeResponse($order, $responseCpe){
         if($responseCpe){
             $response = $responseCpe['response'];
             if($response->ErrorCode != 0){
@@ -117,7 +117,7 @@ class CPE extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function activateCpe($order){
+    private function activateCpe($order){
         $cpe = new cpeApi();
 
 /**********************************  Remove the exist device  ***************************************
@@ -169,7 +169,7 @@ class CPE extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function deactivateCpe($order){
+    private function deactivateCpe($order){
         $params = [
             'transactionId' => $this->hsi_validator->getTransactionId(),//$order['PON'],
             'deviceId'      => $order['UNIQUEDEVICEID']
@@ -184,7 +184,7 @@ class CPE extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function updateCpe($order){
+    private function updateCpe($order){
         $params = [
             'transactionId' => $order['PON'],
             'profileName'   => $order['CPEPROFILENAME'],

@@ -43,7 +43,7 @@ class RadiusManager extends MY_Controller
      * Process the order for different action
      * @param $radiusRequest
      */
-    public function processRadiusAction($radiusOrder){
+    private function processRadiusAction($radiusOrder){
         if($radiusOrder['ACTIONCODE'] == 'add') {
             $responseRadius = $this->addRadius($radiusOrder);
         }
@@ -73,7 +73,7 @@ class RadiusManager extends MY_Controller
      * @param $order
      * @param $response
      */
-    public function processRadiusResponse($order, $response){
+    private function processRadiusResponse($order, $response){
         if($response){
             if(!strpos($response, 'OK')){
                 die("Failure for {$order['USERNAME']} ");
@@ -90,7 +90,7 @@ class RadiusManager extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function addRadius($order){
+    private function addRadius($order){
         // Prepare the data for the email server
         $params = [
             'userName'    => $order['USERNAME'],
@@ -107,7 +107,7 @@ class RadiusManager extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function deleteRadiusServer($order){
+    private function deleteRadiusServer($order){
         // Prepare the data for the email server
         $params = [
             'userName'    => $order['USERNAME'],
@@ -123,7 +123,7 @@ class RadiusManager extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function changeRadius($order){
+    private function changeRadius($order){
         // Prepare the data for the email server
         $params = [
             'userName'    => $order['USERNAME'],
@@ -139,7 +139,7 @@ class RadiusManager extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function restoreRadius($order){
+    private function restoreRadius($order){
         // Prepare the data for the email server
         $params = [
             'userName'    => $order['USERNAME'],
@@ -154,7 +154,7 @@ class RadiusManager extends MY_Controller
      * @param $order
      * @return mixed
      */
-    public function suspectRadius($order){
+    private function suspectRadius($order){
         // Prepare the data for the email server
         $params = [
             'userName'    => $order['USERNAME'],

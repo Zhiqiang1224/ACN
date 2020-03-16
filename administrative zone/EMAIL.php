@@ -33,21 +33,21 @@ class EMAIL extends MY_Controller
     /**
      * Add to Email server
      */
-    public function add(){
+    private function add(){
         $this->_doAction('add');
     }
 
     /**
      * Change  to Email server
      */
-    public function change(){
+    private function change(){
         $this->_doAction('change');
     }
 
     /**
      * Delete to Email server
      */
-    public function delete(){
+    private function delete(){
         $this->_doAction('delete');
     }
 
@@ -94,7 +94,7 @@ class EMAIL extends MY_Controller
      * @param $emailOrder
      * @param $responseEmail
      */
-    public function saveEmailResponse($emailOrder, $responseEmail){
+    private function saveEmailResponse($emailOrder, $responseEmail){
         if($responseEmail){
             if(!strpos($responseEmail, 'OK')){
                 echo "Email  error  <br> ";
