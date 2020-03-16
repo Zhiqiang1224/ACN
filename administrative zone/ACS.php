@@ -68,21 +68,21 @@ class ACS extends MY_Controller
     /**
      * Add action of ACS
      */
-    public function add(){
+    private function add(){
         $this->_doAction('add');
     }
 
     /**
      * Change action of ACS
      */
-    public function change(){
+    private function change(){
         $this->_doAction('change');
     }
 
     /**
      * Delete action of ACS
      */
-    public function delete(){
+    private function delete(){
         $this->_doAction('delete');
     }
 
